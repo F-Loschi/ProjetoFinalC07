@@ -234,45 +234,6 @@ public class PadrinhosDAO extends ConnectionDao {
         }
     }
 
-    // Método para mostrar estatísticas gerais
-    public void showEstatisticas() {
-        connectToDb();
-
-        try {
-            // Contar total de padrinhos
-            String sqlTotal = "SELECT COUNT(*) as total FROM Padrinhos";
-            st = con.createStatement();
-            rs = st.executeQuery(sqlTotal);
-
-            if (rs.next()) {
-                System.out.println("📊 ESTATÍSTICAS DOS PADRINHOS MÁGICOS");
-                System.out.println("═══════════════════════════════════════");
-                System.out.println("🧚‍♀️ Total de Padrinhos: " + rs.getInt("total"));
-            }
-
-            // Contar por tipo
-            String sqlPorTipo = "SELECT tipoPadrinho, COUNT(*) as quantidade FROM Padrinhos GROUP BY tipoPadrinho";
-            rs = st.executeQuery(sqlPorTipo);
-
-            System.out.println("\n🎭 Padrinhos por Tipo:");
-            while (rs.next()) {
-                System.out.println("   " + rs.getString("tipoPadrinho") + ": " + rs.getInt("quantidade"));
-            }
-
-        } catch (SQLException exc) {
-            System.out.println("🚫 Erro ao gerar estatísticas: " + exc.getMessage());
-        } finally {
-            try {
-                if (rs != null) rs.close();
-                if (st != null) st.close();
-                if (con != null) con.close();
-            } catch (SQLException exc) {
-                System.out.println("Erro ao fechar conexão: " + exc.getMessage());
-            }
-        }
-    }
-
-    // Métodos originais mantidos para compatibilidade
     public boolean insertPadrinho(Padrinhos padrinho) {
         connectToDb();
         String sql = "INSERT INTO Padrinhos (nomePadrinho, tipoPadrinho, Varinha_idSerial, Crianca_idCrianca) VALUES (?, ?, ?, ?)";

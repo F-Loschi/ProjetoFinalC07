@@ -8,13 +8,14 @@ import java.util.Scanner;
  * Gerencia a interface de usuário e navegação entre funcionalidades
  */
 public class MenuBD {
-    // Constantes para melhor manutenibilidade
+
+    // ==================== CONSTANTES ====================
     private static final String SEPARADOR = "=".repeat(50);
     private static final String TITULO_PRINCIPAL = "🧚‍♀️ MENU PADRINHOS MÁGICOS 🧚‍♂️";
     private static final String MENSAGEM_OPCAO_INVALIDA = "⚠️ Opção inválida! Digite apenas números válidos.";
     private static final String MENSAGEM_PAUSAR = "\nPressione ENTER para continuar...";
 
-    // Enums para melhor organização das opções
+    // ==================== ENUMS ====================
     private enum OpcaoMenuPrincipal {
         GERENCIAR_CRIANCAS(1, "👶 Gerenciar Crianças"),
         GERENCIAR_PADRINHOS(2, "🧚 Gerenciar Padrinhos"),
@@ -52,11 +53,11 @@ public class MenuBD {
     }
 
     private enum OpcaoCriancas {
-        LISTAR(1, "📋 Listar todas as crianças"),
-        BUSCAR(2, "🔍 Buscar criança por ID"),
-        INSERIR(3, "➕ Inserir nova criança"),
-        EDITAR(4, "✏️ Editar criança"),
-        EXCLUIR(5, "❌ Excluir criança");
+        LISTAR_CRIANCA(1, "📋 Listar todas as crianças"),
+        BUSCAR_CRIANCA(2, "🔍 Buscar criança por ID"),
+        INSERIR_CRIANCA(3, "➕ Inserir nova criança"),
+        EDITAR_CRIANCA(4, "✏️ Editar criança"),
+        EXCLUIR_CRIANCA(5, "❌ Excluir criança");
 
         private final int codigo;
         private final String descricao;
@@ -123,16 +124,193 @@ public class MenuBD {
         }
     }
 
+    private enum OpcaoPadrinhos {
+        LISTAR_PADRINHOS(1, "📋 Listar todos os padrinhos"),
+        BUSCAR_PADRINHO(2, "🔍 Buscar padrinho por ID"),
+        INSERIR_PADRINHO(3, "➕ Inserir novo padrinho"),
+        EDITAR_PADRINHO(4, "✏️ Editar padrinho"),
+        EXCLUIR_PADRINHO(5, "❌ Excluir padrinho");
+
+        private final int codigo;
+        private final String descricao;
+
+        OpcaoPadrinhos(int codigo, String descricao) {
+            this.codigo = codigo;
+            this.descricao = descricao;
+        }
+
+        public int getCodigo() {
+            return codigo;
+        }
+
+        public String getDescricao() {
+            return descricao;
+        }
+
+        public static OpcaoPadrinhos fromCodigo(int codigo) {
+            for (OpcaoPadrinhos opcao : values()) {
+                if (opcao.codigo == codigo) {
+                    return opcao;
+                }
+            }
+            return null;
+        }
+    }
+
+    private enum OpcaoAntiFadas {
+        LISTAR_ANTI_FADAS(1, "📋 Listar todas as anti-fadas"),
+        BUSCAR_ANTI_FADA(2, "🔍 Buscar anti-fada por ID"),
+        INSERIR_ANTI_FADA(3, "➕ Inserir nova anti-fada"),
+        EDITAR_ANTI_FADA(4, "✏️ Editar anti-fada"),
+        EXCLUIR_ANTI_FADA(5, "❌ Excluir anti-fada");
+
+        private final int codigo;
+        private final String descricao;
+
+        OpcaoAntiFadas(int codigo, String descricao) {
+            this.codigo = codigo;
+            this.descricao = descricao;
+        }
+
+        public int getCodigo() {
+            return codigo;
+        }
+
+        public String getDescricao() {
+            return descricao;
+        }
+
+        public static OpcaoAntiFadas fromCodigo(int codigo) {
+            for (OpcaoAntiFadas opcao : values()) {
+                if (opcao.codigo == codigo) {
+                    return opcao;
+                }
+            }
+            return null;
+        }
+    }
+
+    private enum OpcaoGeneralFada {
+        LISTAR_GENERAL_FADAS(1, "📋 Listar todos os general fadas"),
+        BUSCAR_GENERAL_FADA(2, "🔍 Buscar general fada por ID"),
+        INSERIR_GENERAL_FADA(3, "➕ Inserir novo general fada"),
+        EDITAR_GENERAL_FADA(4, "✏️ Editar general fada"),
+        EXCLUIR_GENERAL_FADA(5, "❌ Excluir general fada");
+
+        private final int codigo;
+        private final String descricao;
+
+        OpcaoGeneralFada(int codigo, String descricao) {
+            this.codigo = codigo;
+            this.descricao = descricao;
+        }
+
+        public int getCodigo() {
+            return codigo;
+        }
+
+        public String getDescricao() {
+            return descricao;
+        }
+
+        public static OpcaoGeneralFada fromCodigo(int codigo) {
+            for (OpcaoGeneralFada opcao : values()) {
+                if (opcao.codigo == codigo) {
+                    return opcao;
+                }
+            }
+            return null;
+        }
+    }
+
+    private enum OpcaoDesejos {
+        LISTAR_DESEJOS(1, "📋 Listar todos os desejos"),
+        BUSCAR_DESEJO(2, "🔍 Buscar desejo por ID"),
+        BUSCAR_POR_TIPO(3, "🎯 Buscar desejos por tipo"),
+        BUSCAR_POR_STATUS(4, "⚡ Buscar desejos por status"),
+        DESEJOS_PENDENTES(5, "⏳ Listar desejos pendentes"),
+        DESEJOS_REALIZADOS(6, "✅ Listar desejos realizados"),
+        ESTATISTICAS(7, "📊 Estatísticas dos desejos"),
+        INSERIR_DESEJO(8, "➕ Inserir novo desejo"),
+        EDITAR_DESEJO(9, "✏️ Editar desejo"),
+        EXCLUIR_DESEJO(10, "❌ Excluir desejo");
+
+        private final int codigo;
+        private final String descricao;
+
+        OpcaoDesejos(int codigo, String descricao) {
+            this.codigo = codigo;
+            this.descricao = descricao;
+        }
+
+        public int getCodigo() {
+            return codigo;
+        }
+
+        public String getDescricao() {
+            return descricao;
+        }
+
+        public static OpcaoDesejos fromCodigo(int codigo) {
+            for (OpcaoDesejos opcao : values()) {
+                if (opcao.codigo == codigo) {
+                    return opcao;
+                }
+            }
+            return null;
+        }
+    }
+
+    private enum OpcaoRelacionamentos {
+        LISTAR_RELACIONAMENTOS(1, "📋 Listar todos os relacionamentos"),
+        BUSCAR_POR_CRIANCA(2, "👶 Buscar relacionamentos por criança"),
+        BUSCAR_POR_DESEJO(3, "✨ Buscar relacionamentos por desejo"),
+        RELACIONAMENTOS_ATIVOS(4, "🔗 Listar relacionamentos ativos"),
+        RELACIONAMENTOS_FINALIZADOS(5, "✅ Listar relacionamentos finalizados"),
+        CRIAR_RELACIONAMENTO(6, "➕ Criar novo relacionamento"),
+        EDITAR_RELACIONAMENTO(7, "✏️ Editar relacionamento"),
+        FINALIZAR_RELACIONAMENTO(8, "🏁 Finalizar relacionamento"),
+        EXCLUIR_RELACIONAMENTO(9, "❌ Excluir relacionamento");
+
+        private final int codigo;
+        private final String descricao;
+
+        OpcaoRelacionamentos(int codigo, String descricao) {
+            this.codigo = codigo;
+            this.descricao = descricao;
+        }
+
+        public int getCodigo() {
+            return codigo;
+        }
+
+        public String getDescricao() {
+            return descricao;
+        }
+
+        public static OpcaoRelacionamentos fromCodigo(int codigo) {
+            for (OpcaoRelacionamentos opcao : values()) {
+                if (opcao.codigo == codigo) {
+                    return opcao;
+                }
+            }
+            return null;
+        }
+    }
+
+    // ==================== ATRIBUTOS ====================
     private final Scanner scanner;
     private boolean executando;
 
+    // ==================== CONSTRUTOR ====================
     public MenuBD() {
         this.scanner = new Scanner(System.in);
         this.executando = true;
     }
 
-    /**
-     * Inicia o sistema e exibe o menu principal
+    // ==================== METODO PRINCIPAL ====================
+    /*
+      Inicia o sistema e exibe o menu principal
      */
     public void iniciar() {
         exibirMensagemBoasVindas();
@@ -155,6 +333,7 @@ public class MenuBD {
         fecharRecursos();
     }
 
+    // ==================== MÉTODOS DE EXIBIÇÃO DE MENU ====================
     /**
      * Exibe mensagem de boas-vindas
      */
@@ -164,7 +343,22 @@ public class MenuBD {
     }
 
     /**
-     * Processa a opção selecionada no menu principal
+     * Exibe o menu principal do sistema
+     */
+    private void exibirMenuPrincipal() {
+        System.out.println("\n" + SEPARADOR);
+        System.out.println(TITULO_PRINCIPAL);
+        System.out.println(SEPARADOR);
+
+        for (OpcaoMenuPrincipal opcao : OpcaoMenuPrincipal.values()) {
+            System.out.println(opcao.getCodigo() + ". " + opcao.getDescricao());
+        }
+
+        System.out.print("Escolha uma opção: ");
+    }
+
+    /*
+     Processa a opção selecionada no menu principal
      */
     private void processarOpcaoMenuPrincipal(int opcao) {
         OpcaoMenuPrincipal opcaoEnum = OpcaoMenuPrincipal.fromCodigo(opcao);
@@ -202,23 +396,7 @@ public class MenuBD {
         }
     }
 
-    /**
-     * Exibe o menu principal do sistema
-     */
-    private void exibirMenuPrincipal() {
-        System.out.println("\n" + SEPARADOR);
-        System.out.println(TITULO_PRINCIPAL);
-        System.out.println(SEPARADOR);
-
-        for (OpcaoMenuPrincipal opcao : OpcaoMenuPrincipal.values()) {
-            System.out.println(opcao.getCodigo() + ". " + opcao.getDescricao());
-        }
-
-        System.out.print("Escolha uma opção: ");
-    }
-
-    // ===== MÉTODOS DE GERENCIAMENTO =====
-
+    // ==================== MÉTODOS DE GERENCIAMENTO ====================
     /**
      * Gerencia operações relacionadas às crianças
      */
@@ -240,40 +418,22 @@ public class MenuBD {
         }
 
         switch (opcaoEnum) {
-            case LISTAR:
+            case LISTAR_CRIANCA:
                 listarTodasCriancas();
                 break;
-            case BUSCAR:
+            case BUSCAR_CRIANCA:
                 buscarCriancaPorId();
                 break;
-            case INSERIR:
+            case INSERIR_CRIANCA:
                 inserirCrianca();
                 break;
-            case EDITAR:
+            case EDITAR_CRIANCA:
                 editarCrianca();
                 break;
-            case EXCLUIR:
+            case EXCLUIR_CRIANCA:
                 excluirCrianca();
                 break;
         }
-    }
-
-    private void gerenciarPadrinhos() {
-        System.out.println("\n🧚 === GERENCIAR PADRINHOS ===");
-        // TODO: Implementar submenu de padrinhos
-        System.out.println("Funcionalidade em desenvolvimento...");
-    }
-
-    private void gerenciarAntiFadas() {
-        System.out.println("\n🦹 === GERENCIAR ANTI-FADAS ===");
-        // TODO: Implementar submenu de anti-fadas
-        System.out.println("Funcionalidade em desenvolvimento...");
-    }
-
-    private void gerenciarGeneralFada() {
-        System.out.println("\n⭐ === GERENCIAR GENERAL FADA ===");
-        // TODO: Implementar submenu de general fada
-        System.out.println("Funcionalidade em desenvolvimento...");
     }
 
     private void gerenciarVarinhas() {
@@ -287,6 +447,213 @@ public class MenuBD {
         int opcao = lerOpcaoInt();
 
         processarOpcaoVarinhas(opcao);
+    }
+
+    private void gerenciarPadrinhos() {
+        System.out.println("\n🧚 === GERENCIAR PADRINHOS ===");
+
+        for (OpcaoPadrinhos opcao : OpcaoPadrinhos.values()) {
+            System.out.println(opcao.getCodigo() + ". " + opcao.getDescricao());
+        }
+
+        System.out.print("Escolha uma opção: ");
+        int opcao = lerOpcaoInt();
+
+        OpcaoPadrinhos opcaoEnum = OpcaoPadrinhos.fromCodigo(opcao);
+
+        if (opcaoEnum == null) {
+            System.out.println("⚠️ Opção inválida em Padrinhos.");
+            return;
+        }
+
+        switch (opcaoEnum) {
+            case LISTAR_PADRINHOS:
+                listarTodosPadrinhos();
+                break;
+            case BUSCAR_PADRINHO:
+                buscarPadrinhoPorId();
+                break;
+            case INSERIR_PADRINHO:
+                inserirPadrinho();
+                break;
+            case EDITAR_PADRINHO:
+                editarPadrinho();
+                break;
+            case EXCLUIR_PADRINHO:
+                excluirPadrinho();
+                break;
+        }
+    }
+
+    private void gerenciarAntiFadas() {
+        System.out.println("\n🦹 === GERENCIAR ANTI-FADAS ===");
+
+        for (OpcaoAntiFadas opcao : OpcaoAntiFadas.values()) {
+            System.out.println(opcao.getCodigo() + ". " + opcao.getDescricao());
+        }
+
+        System.out.print("Escolha uma opção: ");
+        int opcao = lerOpcaoInt();
+
+        OpcaoAntiFadas opcaoEnum = OpcaoAntiFadas.fromCodigo(opcao);
+
+        if (opcaoEnum == null) {
+            System.out.println("⚠️ Opção inválida em Anti-Fadas.");
+            return;
+        }
+
+        switch (opcaoEnum) {
+            case LISTAR_ANTI_FADAS:
+                listarTodasAntiFadas();
+                break;
+            case BUSCAR_ANTI_FADA:
+                buscarAntiFadaPorId();
+                break;
+            case INSERIR_ANTI_FADA:
+                inserirAntiFada();
+                break;
+            case EDITAR_ANTI_FADA:
+                editarAntiFada();
+                break;
+            case EXCLUIR_ANTI_FADA:
+                excluirAntiFada();
+                break;
+        }
+    }
+
+    private void gerenciarGeneralFada() {
+        System.out.println("\n⭐ === GERENCIAR GENERAL FADA ===");
+
+        for (OpcaoGeneralFada opcao : OpcaoGeneralFada.values()) {
+            System.out.println(opcao.getCodigo() + ". " + opcao.getDescricao());
+        }
+
+        System.out.print("Escolha uma opção: ");
+        int opcao = lerOpcaoInt();
+
+        OpcaoGeneralFada opcaoEnum = OpcaoGeneralFada.fromCodigo(opcao);
+
+        if (opcaoEnum == null) {
+            System.out.println("⚠️ Opção inválida em General Fada.");
+            return;
+        }
+
+        switch (opcaoEnum) {
+            case LISTAR_GENERAL_FADAS:
+                listarTodosGeneralFadas();
+                break;
+            case BUSCAR_GENERAL_FADA:
+                buscarGeneralFadaPorId();
+                break;
+            case INSERIR_GENERAL_FADA:
+                inserirGeneralFada();
+                break;
+            case EDITAR_GENERAL_FADA:
+                editarGeneralFada();
+                break;
+            case EXCLUIR_GENERAL_FADA:
+                excluirGeneralFada();
+                break;
+        }
+    }
+
+    private void gerenciarDesejos() {
+        System.out.println("\n✨ === GERENCIAR DESEJOS ===");
+
+        for (OpcaoDesejos opcao : OpcaoDesejos.values()) {
+            System.out.println(opcao.getCodigo() + ". " + opcao.getDescricao());
+        }
+
+        System.out.print("Escolha uma opção: ");
+        int opcao = lerOpcaoInt();
+
+        OpcaoDesejos opcaoEnum = OpcaoDesejos.fromCodigo(opcao);
+
+        if (opcaoEnum == null) {
+            System.out.println("⚠️ Opção inválida em Desejos.");
+            return;
+        }
+
+        switch (opcaoEnum) {
+            case LISTAR_DESEJOS:
+                listarTodosDesejos();
+                break;
+            case BUSCAR_DESEJO:
+                buscarDesejoPorId();
+                break;
+            case BUSCAR_POR_TIPO:
+                buscarDesejosPorTipo();
+                break;
+            case BUSCAR_POR_STATUS:
+                buscarDesejosPorStatus();
+                break;
+            case DESEJOS_PENDENTES:
+                listarDesejosPendentes();
+                break;
+            case DESEJOS_REALIZADOS:
+                listarDesejosRealizados();
+                break;
+            case ESTATISTICAS:
+                mostrarEstatisticasDesejos();
+                break;
+            case INSERIR_DESEJO:
+                inserirDesejo();
+                break;
+            case EDITAR_DESEJO:
+                editarDesejo();
+                break;
+            case EXCLUIR_DESEJO:
+                excluirDesejo();
+                break;
+        }
+    }
+
+    private void gerenciarRelacionamentos() {
+        System.out.println("\n🔗 === GERENCIAR RELACIONAMENTOS ===");
+
+        for (OpcaoRelacionamentos opcao : OpcaoRelacionamentos.values()) {
+            System.out.println(opcao.getCodigo() + ". " + opcao.getDescricao());
+        }
+
+        System.out.print("Escolha uma opção: ");
+        int opcao = lerOpcaoInt();
+
+        OpcaoRelacionamentos opcaoEnum = OpcaoRelacionamentos.fromCodigo(opcao);
+
+        if (opcaoEnum == null) {
+            System.out.println("⚠️ Opção inválida em Relacionamentos.");
+            return;
+        }
+
+        switch (opcaoEnum) {
+            case LISTAR_RELACIONAMENTOS:
+                listarTodosRelacionamentos();
+                break;
+            case BUSCAR_POR_CRIANCA:
+                buscarRelacionamentosPorCrianca();
+                break;
+            case BUSCAR_POR_DESEJO:
+                buscarRelacionamentosPorDesejo();
+                break;
+            case RELACIONAMENTOS_ATIVOS:
+                listarRelacionamentosAtivos();
+                break;
+            case RELACIONAMENTOS_FINALIZADOS:
+                listarRelacionamentosFinalizados();
+                break;
+            case CRIAR_RELACIONAMENTO:
+                criarRelacionamento();
+                break;
+            case EDITAR_RELACIONAMENTO:
+                editarRelacionamento();
+                break;
+            case FINALIZAR_RELACIONAMENTO:
+                finalizarRelacionamento();
+                break;
+            case EXCLUIR_RELACIONAMENTO:
+                excluirRelacionamento();
+                break;
+        }
     }
 
     /**
@@ -340,20 +707,43 @@ public class MenuBD {
         }
     }
 
-    private void gerenciarDesejos() {
-        System.out.println("\n✨ === GERENCIAR DESEJOS ===");
-        // TODO: Implementar submenu de desejos
-        System.out.println("Funcionalidade em desenvolvimento...");
+
+    // ==================== OPERAÇÕES ESPECÍFICAS DE CRIANÇAS ====================
+    private void listarTodasCriancas() {
+        System.out.println("\n📋 === LISTA DE CRIANÇAS ===");
+        // TODO: Implementar lógica de listagem
+        System.out.println("Implementar: Listar todas as crianças do banco de dados");
     }
 
-    private void gerenciarRelacionamentos() {
-        System.out.println("\n🔗 === RELACIONAR DESEJOS E CRIANÇAS ===");
-        // TODO: Implementar submenu de relacionamentos
-        System.out.println("Funcionalidade em desenvolvimento...");
+    private void buscarCriancaPorId() {
+        System.out.println("\n🔍 === BUSCAR CRIANÇA POR ID ===");
+        System.out.print("Digite o ID da criança: ");
+        int id = lerOpcaoInt();
+        // TODO: Implementar busca por ID
+        System.out.println("Implementar: Buscar criança com ID: " + id);
     }
 
-    // ===== OPERAÇÕES ESPECÍFICAS DE VARINHAS =====
+    private void inserirCrianca() {
+        System.out.println("\n➕ === INSERIR NOVA CRIANÇA ===");
+        // TODO: Implementar inserção
+        System.out.println("Implementar: Formulário para inserir nova criança");
+    }
 
+    private void editarCrianca() {
+        System.out.println("\n✏️ === EDITAR CRIANÇA ===");
+        // TODO: Implementar edição
+        System.out.println("Implementar: Formulário para editar criança existente");
+    }
+
+    private void excluirCrianca() {
+        System.out.println("\n❌ === EXCLUIR CRIANÇA ===");
+        System.out.print("Digite o ID da criança a ser excluída: ");
+        int id = lerOpcaoInt();
+        // TODO: Implementar exclusão com confirmação
+        System.out.println("Implementar: Excluir criança com ID: " + id);
+    }
+
+    // ==================== OPERAÇÕES ESPECÍFICAS DE VARINHAS ====================
     private void buscarVarinhaPorId(br.inatel.DAO.VarinhaDAO varinhaDAO) {
         System.out.print("Digite o ID Serial da varinha: ");
         int id = lerOpcaoInt();
@@ -452,44 +842,244 @@ public class MenuBD {
         }
     }
 
-    // ===== OPERAÇÕES ESPECÍFICAS DE CRIANÇAS =====
-
-    private void listarTodasCriancas() {
-        System.out.println("\n📋 === LISTA DE CRIANÇAS ===");
+    // ==================== OPERAÇÕES ESPECÍFICAS DE PADRINHOS ====================
+    private void listarTodosPadrinhos() {
+        System.out.println("\n📋 === LISTA DE PADRINHOS ===");
         // TODO: Implementar lógica de listagem
-        System.out.println("Implementar: Listar todas as crianças do banco de dados");
+        System.out.println("Implementar: Listar todos os padrinhos do banco de dados");
     }
 
-    private void buscarCriancaPorId() {
-        System.out.println("\n🔍 === BUSCAR CRIANÇA POR ID ===");
-        System.out.print("Digite o ID da criança: ");
+    private void buscarPadrinhoPorId() {
+        System.out.println("\n🔍 === BUSCAR PADRINHO POR ID ===");
+        System.out.print("Digite o ID do padrinho: ");
         int id = lerOpcaoInt();
         // TODO: Implementar busca por ID
-        System.out.println("Implementar: Buscar criança com ID: " + id);
+        System.out.println("Implementar: Buscar padrinho com ID: " + id);
     }
 
-    private void inserirCrianca() {
-        System.out.println("\n➕ === INSERIR NOVA CRIANÇA ===");
+    private void inserirPadrinho() {
+        System.out.println("\n➕ === INSERIR NOVO PADRINHO ===");
         // TODO: Implementar inserção
-        System.out.println("Implementar: Formulário para inserir nova criança");
+        System.out.println("Implementar: Formulário para inserir novo padrinho");
     }
 
-    private void editarCrianca() {
-        System.out.println("\n✏️ === EDITAR CRIANÇA ===");
+    private void editarPadrinho() {
+        System.out.println("\n✏️ === EDITAR PADRINHO ===");
         // TODO: Implementar edição
-        System.out.println("Implementar: Formulário para editar criança existente");
+        System.out.println("Implementar: Formulário para editar padrinho existente");
     }
 
-    private void excluirCrianca() {
-        System.out.println("\n❌ === EXCLUIR CRIANÇA ===");
-        System.out.print("Digite o ID da criança a ser excluída: ");
+    private void excluirPadrinho() {
+        System.out.println("\n❌ === EXCLUIR PADRINHO ===");
+        System.out.print("Digite o ID do padrinho a ser excluído: ");
         int id = lerOpcaoInt();
         // TODO: Implementar exclusão com confirmação
-        System.out.println("Implementar: Excluir criança com ID: " + id);
+        System.out.println("Implementar: Excluir padrinho com ID: " + id);
     }
 
-    // ===== MÉTODOS UTILITÁRIOS =====
+    // ==================== OPERAÇÕES ESPECÍFICAS DE ANTI-FADAS ====================
+    private void listarTodasAntiFadas() {
+        System.out.println("\n📋 === LISTA DE ANTI-FADAS ===");
+        // TODO: Implementar lógica de listagem
+        System.out.println("Implementar: Listar todas as anti-fadas do banco de dados");
+    }
 
+    private void buscarAntiFadaPorId() {
+        System.out.println("\n🔍 === BUSCAR ANTI-FADA POR ID ===");
+        System.out.print("Digite o ID da anti-fada: ");
+        int id = lerOpcaoInt();
+        // TODO: Implementar busca por ID
+        System.out.println("Implementar: Buscar anti-fada com ID: " + id);
+    }
+
+    private void inserirAntiFada() {
+        System.out.println("\n➕ === INSERIR NOVA ANTI-FADA ===");
+        // TODO: Implementar inserção
+        System.out.println("Implementar: Formulário para inserir nova anti-fada");
+    }
+
+    private void editarAntiFada() {
+        System.out.println("\n✏️ === EDITAR ANTI-FADA ===");
+        // TODO: Implementar edição
+        System.out.println("Implementar: Formulário para editar anti-fada existente");
+    }
+
+    private void excluirAntiFada() {
+        System.out.println("\n❌ === EXCLUIR ANTI-FADA ===");
+        System.out.print("Digite o ID da anti-fada a ser excluída: ");
+        int id = lerOpcaoInt();
+        // TODO: Implementar exclusão com confirmação
+        System.out.println("Implementar: Excluir anti-fada com ID: " + id);
+    }
+
+    // ==================== OPERAÇÕES ESPECÍFICAS DE GENERAL FADA ====================
+    private void listarTodosGeneralFadas() {
+        System.out.println("\n📋 === LISTA DE GENERAL FADAS ===");
+        // TODO: Implementar lógica de listagem
+        System.out.println("Implementar: Listar todos os general fadas do banco de dados");
+    }
+
+    private void buscarGeneralFadaPorId() {
+        System.out.println("\n🔍 === BUSCAR GENERAL FADA POR ID ===");
+        System.out.print("Digite o ID do general fada: ");
+        int id = lerOpcaoInt();
+        // TODO: Implementar busca por ID
+        System.out.println("Implementar: Buscar general fada com ID: " + id);
+    }
+
+    private void inserirGeneralFada() {
+        System.out.println("\n➕ === INSERIR NOVO GENERAL FADA ===");
+        // TODO: Implementar inserção
+        System.out.println("Implementar: Formulário para inserir novo general fada");
+    }
+
+    private void editarGeneralFada() {
+        System.out.println("\n✏️ === EDITAR GENERAL FADA ===");
+        // TODO: Implementar edição
+        System.out.println("Implementar: Formulário para editar general fada existente");
+    }
+
+    private void excluirGeneralFada() {
+        System.out.println("\n❌ === EXCLUIR GENERAL FADA ===");
+        System.out.print("Digite o ID do general fada a ser excluído: ");
+        int id = lerOpcaoInt();
+        // TODO: Implementar exclusão com confirmação
+        System.out.println("Implementar: Excluir general fada com ID: " + id);
+    }
+
+    // ==================== OPERAÇÕES ESPECÍFICAS DE DESEJOS ====================
+    private void listarTodosDesejos() {
+        System.out.println("\n📋 === LISTA DE DESEJOS ===");
+        // TODO: Implementar lógica de listagem
+        System.out.println("Implementar: Listar todos os desejos do banco de dados");
+    }
+
+    private void buscarDesejoPorId() {
+        System.out.println("\n🔍 === BUSCAR DESEJO POR ID ===");
+        System.out.print("Digite o ID do desejo: ");
+        int id = lerOpcaoInt();
+        // TODO: Implementar busca por ID
+        System.out.println("Implementar: Buscar desejo com ID: " + id);
+    }
+
+    private void buscarDesejosPorTipo() {
+        System.out.println("\n🎯 === BUSCAR DESEJOS POR TIPO ===");
+        System.out.print("Digite o tipo do desejo: ");
+        String tipo = lerTextoValidado("Tipo não pode ser vazio!");
+        // TODO: Implementar busca por tipo
+        System.out.println("Implementar: Buscar desejos do tipo: " + tipo);
+    }
+
+    private void buscarDesejosPorStatus() {
+        System.out.println("\n⚡ === BUSCAR DESEJOS POR STATUS ===");
+        System.out.print("Digite o status do desejo: ");
+        String status = lerTextoValidado("Status não pode ser vazio!");
+        // TODO: Implementar busca por status
+        System.out.println("Implementar: Buscar desejos com status: " + status);
+    }
+
+    private void listarDesejosPendentes() {
+        System.out.println("\n⏳ === DESEJOS PENDENTES ===");
+        // TODO: Implementar listagem de desejos pendentes
+        System.out.println("Implementar: Listar desejos pendentes");
+    }
+
+    private void listarDesejosRealizados() {
+        System.out.println("\n✅ === DESEJOS REALIZADOS ===");
+        // TODO: Implementar listagem de desejos realizados
+        System.out.println("Implementar: Listar desejos realizados");
+    }
+
+    private void mostrarEstatisticasDesejos() {
+        System.out.println("\n📊 === ESTATÍSTICAS DOS DESEJOS ===");
+        // TODO: Implementar estatísticas
+        System.out.println("Implementar: Mostrar estatísticas dos desejos");
+    }
+
+    private void inserirDesejo() {
+        System.out.println("\n➕ === INSERIR NOVO DESEJO ===");
+        // TODO: Implementar inserção
+        System.out.println("Implementar: Formulário para inserir novo desejo");
+    }
+
+    private void editarDesejo() {
+        System.out.println("\n✏️ === EDITAR DESEJO ===");
+        // TODO: Implementar edição
+        System.out.println("Implementar: Formulário para editar desejo existente");
+    }
+
+    private void excluirDesejo() {
+        System.out.println("\n❌ === EXCLUIR DESEJO ===");
+        System.out.print("Digite o ID do desejo a ser excluído: ");
+        int id = lerOpcaoInt();
+        // TODO: Implementar exclusão com confirmação
+        System.out.println("Implementar: Excluir desejo com ID: " + id);
+    }
+
+    // ==================== OPERAÇÕES ESPECÍFICAS DE RELACIONAMENTOS ====================
+    private void listarTodosRelacionamentos() {
+        System.out.println("\n📋 === LISTA DE RELACIONAMENTOS ===");
+        //  listagem
+        System.out.println("Implementar: Listar todos os relacionamentos do banco de dados");
+    }
+
+    private void buscarRelacionamentosPorCrianca() {
+        System.out.println("\n👶 === BUSCAR RELACIONAMENTOS POR CRIANÇA ===");
+        System.out.print("Digite o ID da criança: ");
+        int id = lerOpcaoInt();
+        //  busca por criança
+        System.out.println("Implementar: Buscar relacionamentos da criança com ID: " + id);
+    }
+
+    private void buscarRelacionamentosPorDesejo() {
+        System.out.println("\n✨ === BUSCAR RELACIONAMENTOS POR DESEJO ===");
+        System.out.print("Digite o ID do desejo: ");
+        int id = lerOpcaoInt();
+        // busca por desejo
+        System.out.println("Implementar: Buscar relacionamentos do desejo com ID: " + id);
+    }
+
+    private void listarRelacionamentosAtivos() {
+        System.out.println("\n🔗 === RELACIONAMENTOS ATIVOS ===");
+        // listagem de relacionamentos ativos
+        System.out.println("Implementar: Listar relacionamentos ativos");
+    }
+
+    private void listarRelacionamentosFinalizados() {
+        System.out.println("\n✅ === RELACIONAMENTOS FINALIZADOS ===");
+        // listagem de relacionamentos finalizados
+        System.out.println("Implementar: Listar relacionamentos finalizados");
+    }
+
+    private void criarRelacionamento() {
+        System.out.println("\n➕ === CRIAR NOVO RELACIONAMENTO ===");
+        // criação
+        System.out.println("Implementar: Formulário para criar novo relacionamento");
+    }
+
+    private void editarRelacionamento() {
+        System.out.println("\n✏️ === EDITAR RELACIONAMENTO ===");
+        //  edição
+        System.out.println("Implementar: Formulário para editar relacionamento existente");
+    }
+
+    private void finalizarRelacionamento() {
+        System.out.println("\n🏁 === FINALIZAR RELACIONAMENTO ===");
+        System.out.print("Digite o ID do relacionamento a ser finalizado: ");
+        int id = lerOpcaoInt();
+        // finalização
+        System.out.println("Implementar: Finalizar relacionamento com ID: " + id);
+    }
+
+    private void excluirRelacionamento() {
+        System.out.println("\n❌ === EXCLUIR RELACIONAMENTO ===");
+        System.out.print("Digite o ID do relacionamento a ser excluído: ");
+        int id = lerOpcaoInt();
+        //  exclusão com confirmação
+        System.out.println("Implementar: Excluir relacionamento com ID: " + id);
+    }
+
+    // ==================== MÉTODOS UTILITÁRIOS ====================
     /**
      * Lê uma opção inteira do usuário com validação
      *

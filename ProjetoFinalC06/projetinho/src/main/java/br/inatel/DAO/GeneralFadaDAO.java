@@ -142,45 +142,7 @@ public class GeneralFadaDAO extends ConnectionDao {
         return generais;
     }
 
-    // Método genérico para buscar todos os valores de um atributo específico
-    public ArrayList<String> selectByAttribute(String attributeName) {
-        connectToDb();
-
-        ArrayList<String> valores = new ArrayList<>();
-        String sql = "SELECT " + attributeName + " FROM GeneralFada";
-
-        try {
-            st = con.createStatement();
-            rs = st.executeQuery(sql);
-
-            System.out.println("🔍 Consultando atributo: " + attributeName);
-            System.out.println("--------------------");
-
-            while (rs.next()) {
-                String valor = rs.getString(attributeName);
-                valores.add(valor);
-                System.out.println("📋 " + attributeName + ": " + valor);
-            }
-
-            System.out.println("--------------------");
-            System.out.println("🎖️ Total de registros encontrados: " + valores.size());
-
-        } catch (SQLException exc) {
-            System.out.println("⚠️ Erro ao consultar atributo " + attributeName + ": " + exc.getMessage());
-        } finally {
-            try {
-                if (rs != null) rs.close();
-                if (st != null) st.close();
-                if (con != null) con.close();
-            } catch (SQLException exc) {
-                System.out.println("Erro ao fechar conexão: " + exc.getMessage());
-            }
-        }
-
-        return valores;
-    }
-
-    // Métodos específicos para cada atributo (mais seguros)
+    // Métodos específicos para cada atributo
     public ArrayList<String> selectAllNomes() {
         connectToDb();
 
@@ -292,41 +254,4 @@ public class GeneralFadaDAO extends ConnectionDao {
         return varinhas;
     }
 
-    // Método para buscar valores únicos de um atributo (sem duplicatas)
-    public ArrayList<String> selectUniqueByAttribute(String attributeName) {
-        connectToDb();
-
-        ArrayList<String> valoresUnicos = new ArrayList<>();
-        String sql = "SELECT DISTINCT " + attributeName + " FROM GeneralFada";
-
-        try {
-            st = con.createStatement();
-            rs = st.executeQuery(sql);
-
-            System.out.println("🔍 Valores únicos do atributo: " + attributeName);
-            System.out.println("--------------------");
-
-            while (rs.next()) {
-                String valor = rs.getString(attributeName);
-                valoresUnicos.add(valor);
-                System.out.println("📋 " + attributeName + ": " + valor);
-            }
-
-            System.out.println("--------------------");
-            System.out.println("🎖️ Total de valores únicos: " + valoresUnicos.size());
-
-        } catch (SQLException exc) {
-            System.out.println("⚠️ Erro ao consultar valores únicos de " + attributeName + ": " + exc.getMessage());
-        } finally {
-            try {
-                if (rs != null) rs.close();
-                if (st != null) st.close();
-                if (con != null) con.close();
-            } catch (SQLException exc) {
-                System.out.println("Erro ao fechar conexão: " + exc.getMessage());
-            }
-        }
-
-        return valoresUnicos;
-    }
 }
