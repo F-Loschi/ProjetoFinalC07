@@ -1,6 +1,6 @@
 /*
-    Beatriz Vaz Pedroso Santos Cobral - 2082
-    Felipe Silva Loschi - 601
+    Beatriz Vaz Pedroso Santos Cobral - GEC 2082
+    Felipe Silva Loschi - GES 601
 */
 
 package br.inatel;
@@ -15,6 +15,7 @@ import static br.inatel.Model.Uteis.Eventos.decidirEvento;
 import static br.inatel.Model.Uteis.Eventos.fofoca;
 import static br.inatel.Model.Uteis.Util.esperaAi;
 import static br.inatel.Model.Personagens.Crianca.felicidade;
+import static br.inatel.Model.Uteis.Util.lerOpcaoSegura;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -120,6 +121,20 @@ public class Main {
         menu.warning();
         esperaAi(3500);
 
+        System.out.println("✨════════════════════════════════════════════════════════════════✨");
+        System.out.println("🌟 Bem-vindo, jovem aprendiz! Antes de começar sua jornada,        🌟");
+        System.out.println("🌟 as estrelas perguntam: deseja explorar o Banco de Dados         🌟");
+        System.out.println("🌟 Encantado dos Desejos Mágicos?                                  🌟");
+        System.out.println("✨════════════════════════════════════════════════════════════════✨");
+        System.out.println("🪄 Sim, quero aventura! (1) / 🎭 Não, vamos direto para a diversão! (Qualquer número)");
+        int entrarNoMenu = lerOpcaoSegura("💫 Digite sua escolha mágica: ");
+        if (entrarNoMenu == 1) {
+            System.out.println("🌈 *POOF!* Transportando para o Reino dos Dados Mágicos... ✨");
+            menuBD.exibirMenuPrincipal();
+        } else {
+            System.out.println("🎪 Perfeito! Vamos começar a diversão principal! 🌟");
+        }
+
         //Aqui é o big-for(eventos)
         for (int i = jogador.getIdadeCrianca(); i < 18 && !sairDoLoop; i++) {
             try {
@@ -134,11 +149,6 @@ public class Main {
                         int opcao = menu.lerOpcaoSegura("🪄 Digite sua escolha (1-3): ");
                         menu.setOpcaoEscolhida(opcao);
                         resultado = menu.eventos((GeneralFada) general, nossoPadrinho);
-                        System.out.println("Deseja mexer no banco de dados?(Sim=1)");
-                        int entrarNoBD=scanner.nextInt();
-                        if(entrarNoBD==1){
-                            menuBD.exibirMenuPrincipal();
-                        }
                     }
                 }
                 else{
@@ -148,11 +158,6 @@ public class Main {
                         int opcao = menu.lerOpcaoSegura("🪄 Digite sua escolha (1-3): ");
                         menu.setOpcaoEscolhida(opcao);
                         resultado = menu.eventos((GeneralFada) general, nossaMadrinha);
-                        System.out.println("Deseja mexer no banco de dados?(Sim=1)");
-                        int entrarNoBD=scanner.nextInt();
-                        if(entrarNoBD==1){
-                            menuBD.exibirMenuPrincipal();
-                        }
                     }
                 }
 
@@ -266,6 +271,20 @@ public class Main {
             default:
                 break;
         }
+
+        System.out.println("✨════════════════════════════════════════════════════════════════✨");
+        System.out.println("🌟 As estrelas sussurram: Antes de partir, deseja explorar       🌟");
+        System.out.println("🌟 os segredos mágicos do Banco de Dados Encantado?              🌟");
+        System.out.println("✨════════════════════════════════════════════════════════════════✨");
+        System.out.println("🪄 Sim, quero magia! (1) / 🚪 Não, já tive aventuras suficientes! (Qualquer número)");
+        entrarNoMenu = lerOpcaoSegura("💫 Sua escolha mágica: ");
+        if (entrarNoMenu == 1) {
+            System.out.println("🌈 *POOF!* Abrindo o portal para o Reino dos Dados Mágicos... ✨");
+            menuBD.exibirMenuPrincipal();
+        } else {
+            System.out.println("🌟 Até logo, jovem aprendiz! Que a magia esteja sempre com você! ✨");
+        }
+
         scanner.close();
     }
 }

@@ -435,8 +435,8 @@ public class CriancaDAO extends ConnectionDao {
         String sql = """
         SELECT C.nomeCrianca, D.descricao, D.statusDesejo
         FROM Crianca AS C
-        JOIN Crianca_Faz_Desejos AS CD ON C.idCrianca = CD.Crianca_idCrianca
-        JOIN Desejos AS D ON CD.Desejos_idDesejos = D.id
+        JOIN CriancaFazDesejos AS CD ON C.idCrianca = CD.Crianca_idCrianca
+        JOIN Desejos AS D ON CD.Desejos_idDesejos = D.idDesejos
         """;
 
         try {

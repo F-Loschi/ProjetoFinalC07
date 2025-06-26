@@ -15,7 +15,7 @@ public class DesejosDAO extends ConnectionDao {
         try {
             pst = con.prepareStatement(sql);
             pst.setString(1, desejo.getDescricao());
-            pst.setBoolean(2, desejo.isStatusDesejo()); // Usando setBoolean
+            pst.setBoolean(2, desejo.isStatusDesejo());
 
             pst.execute();
             System.out.println("🌟 Novo desejo registrado no livro mágico!");
@@ -33,22 +33,22 @@ public class DesejosDAO extends ConnectionDao {
         }
     }
 
-    public boolean updateDesejo(int id, Desejos desejo) {
+    public boolean updateDesejo(int idDesejos, Desejos desejo) {
         connectToDb();
-        String sql = "UPDATE Desejos SET descricao = ?, statusDesejo = ? WHERE id = ?";
+        String sql = "UPDATE Desejos SET descricao = ?, statusDesejo = ? WHERE idDesejos = ?";
 
         try {
             pst = con.prepareStatement(sql);
             pst.setString(1, desejo.getDescricao());
-            pst.setBoolean(2, desejo.isStatusDesejo()); // Usando setBoolean
-            pst.setInt(3, id);
+            pst.setBoolean(2, desejo.isStatusDesejo());
+            pst.setInt(3, idDesejos);
 
             int rowsAffected = pst.executeUpdate();
             if (rowsAffected > 0) {
-                System.out.println("✨ Desejo atualizado com sucesso no livro mágico!");
+                System.out.println("✨ Desejo #" + idDesejos + " atualizado com sucesso no livro mágico!");
                 return true;
             } else {
-                System.out.println("📝 Nenhum desejo encontrado com o ID fornecido.");
+                System.out.println("📝 Nenhum desejo encontrado com o ID fornecido: " + idDesejos);
                 return false;
             }
         } catch (SQLException exc) {
@@ -76,12 +76,14 @@ public class DesejosDAO extends ConnectionDao {
 
             while (rs.next()) {
                 Desejos desejoAux = new Desejos(
+                        rs.getInt("idDesejos"),
                         rs.getString("descricao"),
-                        rs.getBoolean("statusDesejo") // Usando getBoolean
+                        rs.getBoolean("statusDesejo")
                 );
 
                 String status = desejoAux.isStatusDesejo() ? "✅ Concedido" : "❌ Não concedido";
-                System.out.println("📝 Desejo: " + desejoAux.getDescricao() + " | Status: " + status);
+                System.out.println("📝 ID: " + desejoAux.getIdDesejos() + " | Desejo: " +
+                        desejoAux.getDescricao() + " | Status: " + status);
                 System.out.println("--------------------");
                 desejos.add(desejoAux);
             }
@@ -133,33 +135,32 @@ public class DesejosDAO extends ConnectionDao {
         return status;
     }
 
-    public Desejos selectDesejoById(int id) {
+    public Desejos selectDesejoById(int idDesejos) {
         connectToDb();
         Desejos desejo = null;
         String sql = "SELECT * FROM Desejos WHERE idDesejos = ?";
 
         try {
             pst = con.prepareStatement(sql);
-            pst.setInt(1, id);
+            pst.setInt(1, idDesejos);
             rs = pst.executeQuery();
 
             if (rs.next()) {
                 desejo = new Desejos(
+                        rs.getInt("idDesejos"),
                         rs.getString("descricao"),
                         rs.getBoolean("statusDesejo")
                 );
-                // Assumindo que a classe Desejos tem um método setId()
-                desejo.setIdDesejos(rs.getInt("idDesejos"));
 
-                System.out.println("Desejo encontrado:");
-                System.out.println("ID: " + desejo.getIdDesejos());
-                System.out.println("Descrição: " + desejo.getDescricao());
-                System.out.println("Status: " + (desejo.isStatusDesejo() ? "Concedido" : "Não concedido"));
+                System.out.println("📝 Desejo encontrado:");
+                System.out.println("🆔 ID: " + desejo.getIdDesejos());
+                System.out.println("📄 Descrição: " + desejo.getDescricao());
+                System.out.println("🎯 Status: " + (desejo.isStatusDesejo() ? "Concedido ✅" : "Não concedido ❌"));
             } else {
-                System.out.println("Desejo não encontrado com ID: " + id);
+                System.out.println("🔍 Nenhum desejo encontrado com ID: " + idDesejos);
             }
         } catch (SQLException exc) {
-            System.out.println("Erro ao buscar desejo por ID: " + exc.getMessage());
+            System.out.println("📖 Erro ao buscar desejo por ID: " + exc.getMessage());
         } finally {
             try {
                 if (rs != null) rs.close();
@@ -189,7 +190,7 @@ public class DesejosDAO extends ConnectionDao {
             }
             System.out.println("🌟 Total de descrições listadas: " + descricoes.size());
         } catch (SQLException exc) {
-            System.out.println("Erro ao buscar descrições de desejos: " + exc.getMessage());
+            System.out.println("📖 Erro ao buscar descrições de desejos: " + exc.getMessage());
         } finally {
             try {
                 if (rs != null) rs.close();
@@ -202,25 +203,25 @@ public class DesejosDAO extends ConnectionDao {
         return descricoes;
     }
 
-    public boolean deleteDesejo(int id) {
+    public boolean deleteDesejo(int idDesejos) {
         connectToDb();
         String sql = "DELETE FROM Desejos WHERE idDesejos = ?";
 
         try {
             pst = con.prepareStatement(sql);
-            pst.setInt(1, id);
+            pst.setInt(1, idDesejos);
 
             int rowsAffected = pst.executeUpdate();
 
             if (rowsAffected > 0) {
-                System.out.println("Desejo removido com sucesso!");
+                System.out.println("🗑️ Desejo #" + idDesejos + " removido com sucesso!");
                 return true;
             } else {
-                System.out.println("Nenhum desejo encontrado com ID: " + id);
+                System.out.println("🔍 Nenhum desejo encontrado com ID: " + idDesejos);
                 return false;
             }
         } catch (SQLException exc) {
-            System.out.println("Erro ao remover desejo: " + exc.getMessage());
+            System.out.println("📖 Erro ao remover desejo: " + exc.getMessage());
             return false;
         } finally {
             try {

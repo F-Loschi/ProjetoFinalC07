@@ -12,6 +12,13 @@ public class Magia {
         Padrinhos_idPadrinhos = padrinhos_idPadrinhos;
     }
 
+    public Magia(int idMagia, String nomeMagia, String descricaoMagia, int Padrinhos_idPadrinhos) {
+        this.idMagia = idMagia;
+        this.nomeMagia = nomeMagia;
+        this.descricaoMagia = descricaoMagia;
+        this.Padrinhos_idPadrinhos = Padrinhos_idPadrinhos;
+    }
+
     public String getNomeMagia() {
         return nomeMagia;
     }
@@ -22,5 +29,9 @@ public class Magia {
 
     public int getPadrinhos_idPadrinhos() {
         return Padrinhos_idPadrinhos;
+    }
+
+    public int getIdMagia() {
+        return idMagia;
     }
 }

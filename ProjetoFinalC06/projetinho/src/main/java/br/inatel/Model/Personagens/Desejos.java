@@ -42,18 +42,6 @@ public class Desejos {
         return statusDesejo;
     }
 
-    public void setIdDesejos(int idDesejos) {
-        this.idDesejos = idDesejos;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public void setStatusDesejo(boolean statusDesejo) {
-        this.statusDesejo = statusDesejo;
-    }
-
     public int getIdDesejos() {
         return idDesejos;
     }

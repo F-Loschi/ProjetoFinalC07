@@ -17,7 +17,6 @@ public class Crianca_Faz_DesejosDAO extends ConnectionDao {
 
     public boolean insertCriancaDesejo(int idCrianca, int idDesejo) {
         connectToDb();
-        // Alterado para CriancaFazDesejos
         String sql = "INSERT INTO CriancaFazDesejos (Crianca_idCrianca, Desejos_idDesejos) VALUES (?, ?)";
 
         try {
@@ -45,7 +44,6 @@ public class Crianca_Faz_DesejosDAO extends ConnectionDao {
     public ArrayList<String> selectCriancaDesejos() {
         connectToDb();
         ArrayList<String> relacionamentos = new ArrayList<>();
-        // Alterado para CriancaFazDesejos
         String sql = "SELECT * FROM CriancaFazDesejos";
 
         try {
@@ -78,12 +76,8 @@ public class Crianca_Faz_DesejosDAO extends ConnectionDao {
         return relacionamentos;
     }
 
-    // Demais métodos devem seguir o mesmo padrão de alteração...
-    // Todos os outros métodos que contêm "Crianca_Faz_Desejos" devem ser alterados para "CriancaFazDesejos"
-
     public boolean updateCriancaDesejo(int idCriancaAntiga, int idDesejoAntigo, int idCriancaNova, int idDesejoNovo) {
         connectToDb();
-        // Alterado para CriancaFazDesejos
         String sql = "UPDATE CriancaFazDesejos SET Crianca_idCrianca = ?, Desejos_idDesejos = ? WHERE Crianca_idCrianca = ? AND Desejos_idDesejos = ?";
 
         try {
@@ -116,21 +110,21 @@ public class Crianca_Faz_DesejosDAO extends ConnectionDao {
         }
     }
 
-    public boolean transferirDesejo(int idDesejoTransferir, int idCriancaOrigem, int idCriancaDestino) {
+    public boolean transferirDesejo(int idDesejo, int idCriancaOrigem, int idCriancaDestino) {
         connectToDb();
-        // Alterado para CriancaFazDesejos
         String sql = "UPDATE CriancaFazDesejos SET Crianca_idCrianca = ? WHERE Desejos_idDesejos = ? AND Crianca_idCrianca = ?";
 
         try {
             pst = con.prepareStatement(sql);
             pst.setInt(1, idCriancaDestino);
-            pst.setInt(2, idDesejoTransferir);
+            pst.setInt(2, idDesejo);
             pst.setInt(3, idCriancaOrigem);
 
             int rowsAffected = pst.executeUpdate();
 
             if (rowsAffected > 0) {
-                System.out.println("🎁 Desejo transferido com sucesso entre crianças!");
+                System.out.println("🎁 Desejo ID " + idDesejo + " transferido da criança ID " + idCriancaOrigem +
+                        " para criança ID " + idCriancaDestino + " com sucesso!");
                 return true;
             } else {
                 System.out.println("🔍 Desejo não encontrado para transferência!");
@@ -152,7 +146,6 @@ public class Crianca_Faz_DesejosDAO extends ConnectionDao {
 
     public boolean deleteCriancaDesejo(int idCrianca, int idDesejo) {
         connectToDb();
-        // Alterado para CriancaFazDesejos
         String sql = "DELETE FROM CriancaFazDesejos WHERE Crianca_idCrianca = ? AND Desejos_idDesejos = ?";
 
         try {
@@ -163,7 +156,7 @@ public class Crianca_Faz_DesejosDAO extends ConnectionDao {
             int rowsAffected = pst.executeUpdate();
 
             if (rowsAffected > 0) {
-                System.out.println("💫 Desejo desvinculado da criança! Portal fechado!");
+                System.out.println("💫 Desejo ID " + idDesejo + " desvinculado da criança ID " + idCrianca + "!");
                 return true;
             } else {
                 System.out.println("🔍 Relacionamento não encontrado para remoção!");
@@ -185,7 +178,6 @@ public class Crianca_Faz_DesejosDAO extends ConnectionDao {
 
     public boolean deleteDesejosPorCrianca(int idCrianca) {
         connectToDb();
-        // Alterado para CriancaFazDesejos
         String sql = "DELETE FROM CriancaFazDesejos WHERE Crianca_idCrianca = ?";
 
         try {
@@ -218,7 +210,6 @@ public class Crianca_Faz_DesejosDAO extends ConnectionDao {
 
     public boolean deleteDesejoDeTodas(int idDesejo) {
         connectToDb();
-        // Alterado para CriancaFazDesejos
         String sql = "DELETE FROM CriancaFazDesejos WHERE Desejos_idDesejos = ?";
 
         try {

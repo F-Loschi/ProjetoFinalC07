@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AntiFadaDAO extends ConnectionDao {
-    // AntiFadaDAO.java
     @Override
     public void connectToDb() {
         try {
@@ -46,16 +45,16 @@ public class AntiFadaDAO extends ConnectionDao {
     }
 
     // Método UPDATE - Atualizar dados da Anti-Fada
-    public boolean updateAntiFada(int id, AntiFada antiFada) {
+    public boolean updateAntiFada(int idFada, AntiFada antiFada) {
         connectToDb();
-        String sql = "UPDATE AntiFada SET nomeFada = ?, tipoFada = ?, Varinha_idSerial = ? WHERE id = ?";
+        String sql = "UPDATE AntiFada SET nomeFada = ?, tipoFada = ?, Varinha_idSerial = ? WHERE idFada = ?";
 
         try {
             pst = con.prepareStatement(sql);
             pst.setString(1, antiFada.getNomeFada());
             pst.setString(2, antiFada.getTipoFada());
             pst.setInt(3, antiFada.getVarinha_idSerial());
-            pst.setInt(4, id);
+            pst.setInt(4, idFada);
 
             int rowsAffected = pst.executeUpdate();
 
@@ -63,7 +62,7 @@ public class AntiFadaDAO extends ConnectionDao {
                 System.out.println("⚡ Anti-Fada " + antiFada.getNomeFada() + " teve seus poderes das trevas atualizados!");
                 return true;
             } else {
-                System.out.println("🔍 Anti-Fada com ID " + id + " não foi encontrada no exército das trevas!");
+                System.out.println("🔍 Anti-Fada com ID " + idFada + " não foi encontrada no exército das trevas!");
                 return false;
             }
 
@@ -111,21 +110,21 @@ public class AntiFadaDAO extends ConnectionDao {
         }
     }
 
-    public boolean deleteAntiFadaById(int id) {
+    public boolean deleteAntiFadaById(int idFada) {
         connectToDb();
-        String sql = "DELETE FROM AntiFada WHERE id = ?";
+        String sql = "DELETE FROM AntiFada WHERE idFada = ?";
 
         try {
             pst = con.prepareStatement(sql);
-            pst.setInt(1, id);
+            pst.setInt(1, idFada);
 
             int rowsAffected = pst.executeUpdate();
 
             if (rowsAffected > 0) {
-                System.out.println("⚔️ Anti-Fada com ID " + id + " foi banida do exército das trevas!");
+                System.out.println("⚔️ Anti-Fada com ID " + idFada + " foi banida do exército das trevas!");
                 return true;
             } else {
-                System.out.println("🔍 Anti-Fada com ID " + id + " não foi encontrada no exército!");
+                System.out.println("🔍 Anti-Fada com ID " + idFada + " não foi encontrada no exército!");
                 return false;
             }
 
@@ -246,14 +245,14 @@ public class AntiFadaDAO extends ConnectionDao {
         return tipos;
     }
 
-    public AntiFada selectAntiFadaById(int id) {
+    public AntiFada selectAntiFadaById(int idFada) {
         connectToDb();
         AntiFada antiFada = null;
-        String sql = "SELECT * FROM AntiFada WHERE id = ?";
+        String sql = "SELECT * FROM AntiFada WHERE idFada = ?";
 
         try {
             pst = con.prepareStatement(sql);
-            pst.setInt(1, id);
+            pst.setInt(1, idFada);
             rs = pst.executeQuery();
 
             if (rs.next()) {
@@ -267,7 +266,7 @@ public class AntiFadaDAO extends ConnectionDao {
                 System.out.println("Tipo: " + antiFada.getTipoFada());
                 System.out.println("ID Varinha: " + antiFada.getVarinha_idSerial());
             } else {
-                System.out.println("Anti-Fada não encontrada com ID: " + id);
+                System.out.println("Anti-Fada não encontrada com ID: " + idFada);
             }
         } catch (SQLException exc) {
             System.out.println("Erro ao buscar Anti-Fada por ID: " + exc.getMessage());
@@ -282,5 +281,4 @@ public class AntiFadaDAO extends ConnectionDao {
         }
         return antiFada;
     }
-
 }

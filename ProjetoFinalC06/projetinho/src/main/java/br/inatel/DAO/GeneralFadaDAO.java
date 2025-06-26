@@ -43,16 +43,16 @@ public class GeneralFadaDAO extends ConnectionDao {
         }
     }
 
-    public boolean updateGeneralFada(int id, GeneralFada general) {
+    public boolean updateGeneralFada(int idFada, GeneralFada general) {
         connectToDb();
-        String sql = "UPDATE GeneralFada SET nomeFada = ?, tipoFada = ?, Varinha_idSerial = ? WHERE id = ?";
+        String sql = "UPDATE GeneralFada SET nomeFada = ?, tipoFada = ?, Varinha_idSerial = ? WHERE idFada = ?";
 
         try {
             pst = con.prepareStatement(sql);
             pst.setString(1, general.getNomeFada());
             pst.setString(2, general.getTipoFada());
             pst.setInt(3, general.getVarinha_idSerial());
-            pst.setInt(4, id);
+            pst.setInt(4, idFada);
 
             int rowsAffected = pst.executeUpdate();
 
@@ -77,13 +77,13 @@ public class GeneralFadaDAO extends ConnectionDao {
         }
     }
 
-    public boolean deleteGeneralFada(int id) {
+    public boolean deleteGeneralFada(int idFada) {
         connectToDb();
-        String sql = "DELETE FROM GeneralFada WHERE id = ?";
+        String sql = "DELETE FROM GeneralFada WHERE idFada = ?";
 
         try {
             pst = con.prepareStatement(sql);
-            pst.setInt(1, id);
+            pst.setInt(1, idFada);
 
             int rowsAffected = pst.executeUpdate();
 
@@ -119,6 +119,7 @@ public class GeneralFadaDAO extends ConnectionDao {
             System.out.println("🎖️ Consultando Alto Comando das Fadas:");
             while (rs.next()) {
                 GeneralFada generalAux = new GeneralFada(
+                        rs.getInt("idFada"),
                         rs.getString("nomeFada"),
                         rs.getString("tipoFada"),
                         rs.getInt("Varinha_idSerial")
@@ -142,7 +143,6 @@ public class GeneralFadaDAO extends ConnectionDao {
         return generais;
     }
 
-    // Métodos específicos para cada atributo
     public ArrayList<String> selectAllNomes() {
         connectToDb();
 
@@ -254,18 +254,19 @@ public class GeneralFadaDAO extends ConnectionDao {
         return varinhas;
     }
 
-    public GeneralFada selectGeneralFadaById(int id) {
+    public GeneralFada selectGeneralFadaById(int idFada) {
         connectToDb();
         GeneralFada general = null;
-        String sql = "SELECT * FROM GeneralFada WHERE id = ?";
+        String sql = "SELECT * FROM GeneralFada WHERE idFada = ?";
 
         try {
             pst = con.prepareStatement(sql);
-            pst.setInt(1, id);
+            pst.setInt(1, idFada);
             rs = pst.executeQuery();
 
             if (rs.next()) {
                 general = new GeneralFada(
+                        rs.getInt("idFada"),
                         rs.getString("nomeFada"),
                         rs.getString("tipoFada"),
                         rs.getInt("Varinha_idSerial")
@@ -277,7 +278,7 @@ public class GeneralFadaDAO extends ConnectionDao {
                 System.out.println("🪄 ID Varinha: " + general.getVarinha_idSerial());
                 System.out.println("--------------------");
             } else {
-                System.out.println("🔍 Nenhum General encontrado com ID: " + id);
+                System.out.println("🔍 Nenhum General encontrado com ID: " + idFada);
             }
         } catch (SQLException exc) {
             System.out.println("⚠️ Erro ao buscar General por ID: " + exc.getMessage());

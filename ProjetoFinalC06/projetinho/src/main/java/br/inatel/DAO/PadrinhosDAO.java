@@ -333,12 +333,12 @@ public class PadrinhosDAO extends ConnectionDao {
         ArrayList<String> resultados = new ArrayList<>();
 
         String sql = """
-                SELECT C.nomeCrianca, P.nomePadrinho, D.descricao
-                FROM Padrinhos AS P
-                JOIN Crianca AS C ON P.Crianca_idCrianca = C.idCrianca
-                JOIN Crianca_Faz_Desejos AS CD ON C.idCrianca = CD.Crianca_idCrianca
-                JOIN Desejos AS D ON CD.Desejos_idDesejos = D.id
-                """;
+            SELECT C.nomeCrianca, P.nomePadrinho, D.descricao
+            FROM Padrinhos AS P
+            JOIN Crianca AS C ON P.Crianca_idCrianca = C.idCrianca
+            JOIN CriancaFazDesejos AS CD ON C.idCrianca = CD.Crianca_idCrianca
+            JOIN Desejos AS D ON CD.Desejos_idDesejos = D.idDesejos
+            """;
 
         try {
             st = con.createStatement();
