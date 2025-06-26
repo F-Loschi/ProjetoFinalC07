@@ -46,4 +46,31 @@ public class Crianca {
 
     public boolean getTemPadrinho() { return temPadrinho; }
 
+    public void setIdCrianca(int idCrianca) {
+        this.idCrianca = idCrianca;
+    }
+
+    public void setNomeCrianca(String nomeCrianca) {
+        this.nomeCrianca = nomeCrianca;
+    }
+
+    public void setIdadeCrianca(int idadeCrianca) {
+        this.idadeCrianca = idadeCrianca;
+    }
+
+    public void setSexoCrianca(String sexoCrianca) {
+        this.sexoCrianca = sexoCrianca;
+    }
+
+    public boolean isTemPadrinho() {
+        return temPadrinho;
+    }
+
+    public void setTemPadrinho(boolean temPadrinho) {
+        this.temPadrinho = temPadrinho;
+    }
+
+    public void setEnderecoCrianca(String enderecoCrianca) {
+        this.enderecoCrianca = enderecoCrianca;
+    }
 }

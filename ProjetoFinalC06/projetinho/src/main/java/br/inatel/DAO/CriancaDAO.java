@@ -64,22 +64,39 @@ public class CriancaDAO extends ConnectionDao {
         try {
             st = con.createStatement();
             rs = st.executeQuery(sql);
-            System.out.println("Lista de usuários:");
+            System.out.println("✨📋 LISTA DE CRIANÇAS CADASTRADAS 📋✨");
+            System.out.println("==========================================");
             while (rs.next()) {
-                Crianca CriancaAux = new Crianca(rs.getString("nomeCrianca"), rs.getInt("idadeCrianca"), rs.getString("sexoCrianca"), rs.getBoolean("temPadrinho"), rs.getString("enderecoCrianca"));
-                System.out.println("Nome: " + CriancaAux.getNomeCrianca());
-                System.out.println("--------------------");
+                Crianca CriancaAux = new Crianca(
+                        rs.getString("nomeCrianca"),
+                        rs.getInt("idadeCrianca"),
+                        rs.getString("sexoCrianca"),
+                        rs.getBoolean("temPadrinho"),
+                        rs.getString("enderecoCrianca"));
+
+                // Imprimindo todas as informações com emojis
+                System.out.println("👶 CRIANÇA " + (Criancas.size()+1));
+                System.out.println("🌈 Nome: " + CriancaAux.getNomeCrianca());
+                System.out.println("🎂 Idade: " + CriancaAux.getIdadeCrianca() + " anos");
+                System.out.println("🚻 Sexo: " +
+                        (CriancaAux.getSexoCrianca().equalsIgnoreCase("F") ? "👧 Menina" : "👦 Menino"));
+                System.out.println("🧚 Padrinho/Madrinha: " +
+                        (CriancaAux.isTemPadrinho() ? "✅ Sim" : "❌ Não"));
+                System.out.println("🏠 Endereço: " + CriancaAux.getEnderecoCrianca());
+                System.out.println("------------------------------------------");
+
                 Criancas.add(CriancaAux);
             }
+            System.out.println("✨ " + Criancas.size() + " crianças encontradas ✨");
         } catch (SQLException exc) {
-            System.out.println("Erro: " + exc.getMessage());
+            System.out.println("⛔ ERRO: " + exc.getMessage());
         } finally {
             try {
                 con.close();
                 st.close();
                 rs.close();
             } catch (SQLException exc) {
-                System.out.println("Erro: " + exc.getMessage());
+                System.out.println("⛔ ERRO ao fechar conexão: " + exc.getMessage());
             }
         }
         return Criancas;
@@ -452,5 +469,50 @@ public class CriancaDAO extends ConnectionDao {
             }
         }
         return resultados;
+    }
+
+    public Crianca selectCriancaById(int idCrianca) {
+        connectToDb();
+        Crianca crianca = null;
+        String sql = "SELECT * FROM Crianca WHERE idCrianca = ?";
+
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, idCrianca);
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                crianca = new Crianca(
+                        rs.getString("nomeCrianca"),
+                        rs.getInt("idadeCrianca"),
+                        rs.getString("sexoCrianca"),
+                        rs.getBoolean("temPadrinho"),
+                        rs.getString("enderecoCrianca")
+                );
+                // Assumindo que a classe Crianca tem um método setIdCrianca()
+                crianca.setIdCrianca(rs.getInt("idCrianca"));
+
+                System.out.println("Criança encontrada:");
+                System.out.println("ID: " + crianca.getIdCrianca());
+                System.out.println("Nome: " + crianca.getNomeCrianca());
+                System.out.println("Idade: " + crianca.getIdadeCrianca());
+                System.out.println("Sexo: " + crianca.getSexoCrianca());
+                System.out.println("Tem padrinho: " + crianca.getTemPadrinho());
+                System.out.println("Endereço: " + crianca.getEnderecoCrianca());
+            } else {
+                System.out.println("Criança não encontrada com ID: " + idCrianca);
+            }
+        } catch (SQLException exc) {
+            System.out.println("Erro ao buscar criança por ID: " + exc.getMessage());
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pst != null) pst.close();
+                if (con != null) con.close();
+            } catch (SQLException exc) {
+                System.out.println("Erro ao fechar conexão: " + exc.getMessage());
+            }
+        }
+        return crianca;
     }
 }

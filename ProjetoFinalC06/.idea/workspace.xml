@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a601b1b7-c58c-4fee-af8d-ec4b22714a48" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho.sql" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/src/main/java/br/inatel/DAO/AntiFadaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/src/main/java/br/inatel/DAO/AntiFadaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/src/main/java/br/inatel/DAO/CriancaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/src/main/java/br/inatel/DAO/CriancaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/src/main/java/br/inatel/DAO/Crianca_Faz_DesejosDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/src/main/java/br/inatel/DAO/Crianca_Faz_DesejosDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/src/main/java/br/inatel/DAO/DesejosDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/src/main/java/br/inatel/DAO/DesejosDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/src/main/java/br/inatel/DAO/GeneralFadaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/src/main/java/br/inatel/DAO/GeneralFadaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/src/main/java/br/inatel/DAO/MagiaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/src/main/java/br/inatel/DAO/MagiaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/src/main/java/br/inatel/DAO/PadrinhosDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/src/main/java/br/inatel/DAO/PadrinhosDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/src/main/java/br/inatel/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/src/main/java/br/inatel/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/src/main/java/br/inatel/Model/Personagens/Crianca.java" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/src/main/java/br/inatel/Model/Personagens/Crianca.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/src/main/java/br/inatel/Model/Personagens/Desejos.java" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/src/main/java/br/inatel/Model/Personagens/Desejos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/src/main/java/br/inatel/Model/Uteis/MenuBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/src/main/java/br/inatel/Model/Uteis/MenuBD.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/DAO/AntiFadaDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/DAO/AntiFadaDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/DAO/CriancaDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/DAO/CriancaDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/DAO/Crianca_Faz_DesejosDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/DAO/Crianca_Faz_DesejosDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/DAO/DesejosDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/DAO/DesejosDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/DAO/GeneralFadaDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/DAO/GeneralFadaDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/DAO/MagiaDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/DAO/MagiaDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/DAO/PadrinhosDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/DAO/PadrinhosDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/DAO/VarinhaDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/DAO/VarinhaDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/Model/Personagens/AntiFada.class" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/Model/Personagens/AntiFada.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/Model/Personagens/Crianca.class" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/Model/Personagens/Crianca.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/Model/Personagens/Desejos.class" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/Model/Personagens/Desejos.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/Model/Personagens/GeneralFada.class" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/Model/Personagens/GeneralFada.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/Model/Personagens/Varinha.class" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/Model/Personagens/Varinha.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/Model/Uteis/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/projetinho/target/classes/br/inatel/Model/Uteis/Menu.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;F-Loschi&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/F-Loschi/ProjetoFinalC07.git&quot;,
+    &quot;accountId&quot;: &quot;3e45c71d-c3c4-4932-9596-73bcdfb5077b&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2z13mkn9KwLRUuWO5kjysq3F52o" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/lipe2/OneDrive/Área de Trabalho/ProjetoFinalC07/ProjetoFinalC06",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26094.121" />
+        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-IU-251.26094.121" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a601b1b7-c58c-4fee-af8d-ec4b22714a48" name="Changes" comment="" />
+      <created>1750884912836</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1750884912836</updated>
+      <workItem from="1750884914418" duration="729000" />
+      <workItem from="1750892938955" duration="7613000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

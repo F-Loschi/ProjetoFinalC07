@@ -293,4 +293,41 @@ public class MagiaDAO extends ConnectionDao {
         }
         return resultados;
     }
+
+    public Magia selectMagiaById(int id) {
+        connectToDb();
+        Magia magia = null;
+        String sql = "SELECT * FROM Magia WHERE id = ?";
+
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                magia = new Magia(
+                        rs.getString("nomeMagia"),
+                        rs.getString("descricaoMagia"),
+                        rs.getInt("Padrinhos_idPadrinhos")
+                );
+                System.out.println("Magia encontrada:");
+                System.out.println("Nome: " + magia.getNomeMagia());
+                System.out.println("Descrição: " + magia.getDescricaoMagia());
+                System.out.println("ID Padrinho: " + magia.getPadrinhos_idPadrinhos());
+            } else {
+                System.out.println("Magia não encontrada com ID: " + id);
+            }
+        } catch (SQLException exc) {
+            System.out.println("Erro ao buscar Magia por ID: " + exc.getMessage());
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pst != null) pst.close();
+                if (con != null) con.close();
+            } catch (SQLException exc) {
+                System.out.println("Erro ao fechar conexão: " + exc.getMessage());
+            }
+        }
+        return magia;
+    }
 }

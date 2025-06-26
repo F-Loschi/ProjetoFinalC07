@@ -254,4 +254,42 @@ public class GeneralFadaDAO extends ConnectionDao {
         return varinhas;
     }
 
+    public GeneralFada selectGeneralFadaById(int id) {
+        connectToDb();
+        GeneralFada general = null;
+        String sql = "SELECT * FROM GeneralFada WHERE id = ?";
+
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                general = new GeneralFada(
+                        rs.getString("nomeFada"),
+                        rs.getString("tipoFada"),
+                        rs.getInt("Varinha_idSerial")
+                );
+
+                System.out.println("🎖️ General encontrado:");
+                System.out.println("👑 Nome: " + general.getNomeFada());
+                System.out.println("✨ Especialidade: " + general.getTipoFada());
+                System.out.println("🪄 ID Varinha: " + general.getVarinha_idSerial());
+                System.out.println("--------------------");
+            } else {
+                System.out.println("🔍 Nenhum General encontrado com ID: " + id);
+            }
+        } catch (SQLException exc) {
+            System.out.println("⚠️ Erro ao buscar General por ID: " + exc.getMessage());
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pst != null) pst.close();
+                if (con != null) con.close();
+            } catch (SQLException exc) {
+                System.out.println("Erro ao fechar conexão: " + exc.getMessage());
+            }
+        }
+        return general;
+    }
 }

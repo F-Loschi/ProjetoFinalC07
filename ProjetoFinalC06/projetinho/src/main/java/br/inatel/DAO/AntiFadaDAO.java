@@ -245,4 +245,42 @@ public class AntiFadaDAO extends ConnectionDao {
 
         return tipos;
     }
+
+    public AntiFada selectAntiFadaById(int id) {
+        connectToDb();
+        AntiFada antiFada = null;
+        String sql = "SELECT * FROM AntiFada WHERE id = ?";
+
+        try {
+            pst = con.prepareStatement(sql);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                antiFada = new AntiFada(
+                        rs.getString("nomeFada"),
+                        rs.getString("tipoFada"),
+                        rs.getInt("Varinha_idSerial")
+                );
+                System.out.println("Anti-Fada encontrada:");
+                System.out.println("Nome: " + antiFada.getNomeFada());
+                System.out.println("Tipo: " + antiFada.getTipoFada());
+                System.out.println("ID Varinha: " + antiFada.getVarinha_idSerial());
+            } else {
+                System.out.println("Anti-Fada não encontrada com ID: " + id);
+            }
+        } catch (SQLException exc) {
+            System.out.println("Erro ao buscar Anti-Fada por ID: " + exc.getMessage());
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pst != null) pst.close();
+                if (con != null) con.close();
+            } catch (SQLException exc) {
+                System.out.println("Erro ao fechar conexão: " + exc.getMessage());
+            }
+        }
+        return antiFada;
+    }
+
 }

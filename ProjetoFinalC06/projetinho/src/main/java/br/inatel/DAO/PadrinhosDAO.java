@@ -39,7 +39,7 @@ public class PadrinhosDAO extends ConnectionDao {
                 );
 
                 // Mostrando TODOS os dados de cada padrinho
-                System.out.println("🆔 ID: " + rs.getInt("id"));
+                System.out.println("🆔 ID: " + rs.getInt("idPadrinhos"));
                 System.out.println("📛 Nome do Padrinho: " + rs.getString("nomePadrinho"));
                 System.out.println("🧚‍♀️ Tipo de Padrinho: " + rs.getString("tipoPadrinho"));
                 System.out.println("🪄 ID da Varinha: " + rs.getInt("Varinha_idSerial"));
@@ -70,7 +70,7 @@ public class PadrinhosDAO extends ConnectionDao {
     public Padrinhos selectPadrinhoById(int id) {
         connectToDb();
         Padrinhos padrinho = null;
-        String sql = "SELECT * FROM Padrinhos WHERE id = ?";
+        String sql = "SELECT * FROM Padrinhos WHERE idPadrinhos = ?";
 
         try {
             pst = con.prepareStatement(sql);
@@ -86,7 +86,7 @@ public class PadrinhosDAO extends ConnectionDao {
                 );
 
                 System.out.println("🔍 Padrinho encontrado:");
-                System.out.println("🆔 ID: " + rs.getInt("id"));
+                System.out.println("🆔 ID: " + rs.getInt("idPadrinhos"));
                 System.out.println("📛 Nome: " + rs.getString("nomePadrinho"));
                 System.out.println("🧚‍♀️ Tipo: " + rs.getString("tipoPadrinho"));
                 System.out.println("🪄 ID Varinha: " + rs.getInt("Varinha_idSerial"));
@@ -131,7 +131,7 @@ public class PadrinhosDAO extends ConnectionDao {
                         rs.getInt("Crianca_idCrianca")
                 );
 
-                System.out.println("🆔 ID: " + rs.getInt("id"));
+                System.out.println("🆔 ID: " + rs.getInt("idPadrinhos"));
                 System.out.println("📛 Nome: " + rs.getString("nomePadrinho"));
                 System.out.println("🧚‍♀️ Tipo: " + rs.getString("tipoPadrinho"));
                 System.out.println("🪄 ID Varinha: " + rs.getInt("Varinha_idSerial"));
@@ -179,7 +179,7 @@ public class PadrinhosDAO extends ConnectionDao {
                         rs.getInt("Crianca_idCrianca")
                 );
 
-                System.out.println("🆔 ID Padrinho: " + rs.getInt("id"));
+                System.out.println("🆔 ID Padrinho: " + rs.getInt("idPadrinhos"));
                 System.out.println("📛 Nome: " + rs.getString("nomePadrinho"));
                 System.out.println("🧚‍♀️ Tipo: " + rs.getString("tipoPadrinho"));
                 System.out.println("🪄 ID Varinha: " + rs.getInt("Varinha_idSerial"));
@@ -208,7 +208,7 @@ public class PadrinhosDAO extends ConnectionDao {
     // Método para mostrar apenas os nomes dos padrinhos
     public void selectApenasNomes() {
         connectToDb();
-        String sql = "SELECT id, nomePadrinho FROM Padrinhos ORDER BY nomePadrinho";
+        String sql = "SELECT idPadrinhos, nomePadrinho FROM Padrinhos ORDER BY nomePadrinho";
 
         try {
             st = con.createStatement();
@@ -218,7 +218,7 @@ public class PadrinhosDAO extends ConnectionDao {
             System.out.println("═══════════════════════════════");
 
             while (rs.next()) {
-                System.out.println("🆔 " + rs.getInt("id") + " - 📛 " + rs.getString("nomePadrinho"));
+                System.out.println("🆔 " + rs.getInt("idPadrinhos") + " - 📛 " + rs.getString("nomePadrinho"));
             }
 
         } catch (SQLException exc) {
@@ -264,7 +264,7 @@ public class PadrinhosDAO extends ConnectionDao {
 
     public boolean updatePadrinho(int id, Padrinhos padrinho) {
         connectToDb();
-        String sql = "UPDATE Padrinhos SET nomePadrinho = ?, tipoPadrinho = ?, Varinha_idSerial = ?, Crianca_idCrianca = ? WHERE id = ?";
+        String sql = "UPDATE Padrinhos SET nomePadrinho = ?, tipoPadrinho = ?, Varinha_idSerial = ?, Crianca_idCrianca = ? WHERE idPadrinhos = ?";
 
         try {
             pst = con.prepareStatement(sql);
@@ -299,7 +299,7 @@ public class PadrinhosDAO extends ConnectionDao {
 
     public boolean deletePadrinho(int id) {
         connectToDb();
-        String sql = "DELETE FROM Padrinhos WHERE id = ?";
+        String sql = "DELETE FROM Padrinhos WHERE idPadrinhos = ?";
 
         try {
             pst = con.prepareStatement(sql);

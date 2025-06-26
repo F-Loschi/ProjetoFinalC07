@@ -8,6 +8,7 @@ package br.inatel;
 import br.inatel.DAO.*;
 import br.inatel.Model.Personagens.*;
 import br.inatel.Model.Uteis.Menu;
+import br.inatel.Model.Uteis.MenuBD;
 import br.inatel.Model.Uteis.OpcaoInvalidaException;
 
 import static br.inatel.Model.Uteis.Eventos.decidirEvento;
@@ -43,6 +44,7 @@ public class Main {
         varinhaDAO.connectToDb();
         //Funções que estamos usando
         Menu menu = new Menu();
+        MenuBD menuBD = new MenuBD();
         boolean taCerto = false;
         boolean sairDoLoop = false;
         int oqAconteceu = 0;
@@ -132,6 +134,11 @@ public class Main {
                         int opcao = menu.lerOpcaoSegura("🪄 Digite sua escolha (1-3): ");
                         menu.setOpcaoEscolhida(opcao);
                         resultado = menu.eventos((GeneralFada) general, nossoPadrinho);
+                        System.out.println("Deseja mexer no banco de dados?(Sim=1)");
+                        int entrarNoBD=scanner.nextInt();
+                        if(entrarNoBD==1){
+                            menuBD.exibirMenuPrincipal();
+                        }
                     }
                 }
                 else{
@@ -141,6 +148,11 @@ public class Main {
                         int opcao = menu.lerOpcaoSegura("🪄 Digite sua escolha (1-3): ");
                         menu.setOpcaoEscolhida(opcao);
                         resultado = menu.eventos((GeneralFada) general, nossaMadrinha);
+                        System.out.println("Deseja mexer no banco de dados?(Sim=1)");
+                        int entrarNoBD=scanner.nextInt();
+                        if(entrarNoBD==1){
+                            menuBD.exibirMenuPrincipal();
+                        }
                     }
                 }
 
